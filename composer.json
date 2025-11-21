@@ -1,6 +1,6 @@
 {
     "name": "veejay/http",
-    "description": "Implementation of PSR-7",
+    "description": "Implementation of PSR-7 and PSR-17",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -11,13 +11,15 @@
     ],
     "keywords": [
         "psr-7",
+        "psr-17",
         "http"
     ],
     "require": {
         "php": ">=8.0",
         "ext-mbstring": "*",
         "ext-intl": "*",
-        "psr/http-message": "^2.0"
+        "psr/http-message": "^2.0",
+        "psr/http-factory": "^1.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6"
