@@ -47,7 +47,7 @@ class Request extends AbstractMessage implements RequestInterface
         $this->setUri($uri);
         $this->protocolVersion = $protocolVersion;
         $this->setHeaders($headers);
-        $this->body = $body;
+        $this->setBody($body);
         $this->requestTarget = $this->buildRequestTarget($this->uri);
     }
 

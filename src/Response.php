@@ -118,7 +118,7 @@ class Response extends AbstractMessage implements ResponseInterface
         $this->setStatus($statusCode, $reasonPhrase);
         $this->protocolVersion = $protocolVersion;
         $this->setHeaders($headers);
-        $this->body = $body;
+        $this->setBody($body);
     }
 
     /**

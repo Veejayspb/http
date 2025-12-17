@@ -136,7 +136,8 @@ abstract class AbstractMessage implements MessageInterface
     {
         if (is_null($this->body)) {
             $resource = fopen('php://temp', 'r+');
-            $this->body = new Stream($resource);
+            $stream = new Stream($resource);
+            $this->setBody($stream);
         }
 
         return $this->body;
@@ -148,7 +149,7 @@ abstract class AbstractMessage implements MessageInterface
     public function withBody(StreamInterface $body): MessageInterface
     {
         $new = clone $this;
-        $new->body = $body;
+        $new->setBody($body);
         return $new;
     }
 
@@ -194,5 +195,15 @@ abstract class AbstractMessage implements MessageInterface
         foreach ($headers as $name => $values) {
             $this->setHeader($name, (array)$values);
         }
+    }
+
+    /**
+     * Set body value.
+     * @param StreamInterface|null $body
+     * @return void
+     */
+    protected function setBody(?StreamInterface $body = null): void
+    {
+        $this->body = $body;
     }
 }
