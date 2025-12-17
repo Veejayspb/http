@@ -104,7 +104,7 @@ final class ResponseTest extends TestCase
      * @return Response
      */
     protected function getResponse(
-        int $statusCode = 200,
+        int $statusCode = Response::DEFAULT_STATUS_CODE,
         string $reasonPhrase = '',
         string $protocolVersion = self::PROTOCOL,
         array $headers = self::HEADERS,
@@ -112,7 +112,7 @@ final class ResponseTest extends TestCase
     ) {
         return new class($statusCode, $reasonPhrase, $protocolVersion, $headers, $body) extends Response
         {
-            public int $statusCode = 200;
+            public int $statusCode = Response::DEFAULT_STATUS_CODE;
             public string $reasonPhrase = '';
         };
     }

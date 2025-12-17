@@ -83,10 +83,10 @@ class Response extends AbstractMessage implements ResponseInterface
         511 => 'Network Authentication Required',
     ];
 
+    public const DEFAULT_STATUS_CODE = 200;
     protected const DEFAULT_REASON_PHRASE = 'Unknown';
     protected const STATUS_CODE_MIN = 100;
     protected const STATUS_CODE_MAX = 599;
-    protected const DEFAULT_STATUS_CODE = 200;
 
     /**
      * Response status code.
