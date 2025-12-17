@@ -28,9 +28,9 @@ abstract class AbstractMessage implements MessageInterface
 
     /**
      * Data stream object.
-     * @var StreamInterface|null
+     * @var StreamInterface
      */
-    protected ?StreamInterface $body = null;
+    protected StreamInterface $body;
 
     /**
      * {@inheritdoc}
@@ -134,12 +134,6 @@ abstract class AbstractMessage implements MessageInterface
      */
     public function getBody(): StreamInterface
     {
-        if (is_null($this->body)) {
-            $resource = fopen('php://temp', 'r+');
-            $stream = new Stream($resource);
-            $this->setBody($stream);
-        }
-
         return $this->body;
     }
 
@@ -204,6 +198,11 @@ abstract class AbstractMessage implements MessageInterface
      */
     protected function setBody(?StreamInterface $body = null): void
     {
+        if (is_null($body)) {
+            $resource = fopen('php://temp', 'r+');
+            $body = new Stream($resource);
+        }
+
         $this->body = $body;
     }
 }

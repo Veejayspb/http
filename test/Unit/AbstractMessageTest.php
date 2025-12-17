@@ -140,12 +140,12 @@ final class AbstractMessageTest extends TestCase
         {
             public string $protocolVersion = self::DEFAULT_PROTOCOL_VERSION;
             public array $headers = [];
-            public ?StreamInterface $body = null;
+            public StreamInterface $body;
         };
 
         $message->protocolVersion = $protocolVersion;
         $message->headers = $headers;
-        $message->body = $body;
+        $message->body = $body ?? $this->getStream();
 
         return $message;
     }
